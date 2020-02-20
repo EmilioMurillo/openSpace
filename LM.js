@@ -9,11 +9,15 @@ $(".back").on("click", function(){
 $(".find-btn").on("click", function(){
 
 
+
   $.ajax({
     type: 'GET',
     crossDomain: true,
     dataType: 'jsonp',
-    url: "https://apis.solarialabs.com/v1/meters/?apikey=8R1gWss9LPIiXa9cWZ5XcQ2WYSY3kjeQ",
+    headers: {
+      "Set-Cookie", "HttpOnly;Secure;SameSite=Strict"
+    }
+    url: "https://apis.solarialabs.com/shine/v1/parking-rules/meters/?apikey=QKMqJPOYFn7OPMVOTQceDwbg3pNA51LK",
     success: function(response) {
       var lat1 = response.Results[0].Latitude;
       var lon1 = response.Results[0].Longitude;
