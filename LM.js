@@ -10,13 +10,11 @@ $(".find-btn").on("click", function(){
 
 
 
+  console.log("working");
   $.ajax({
     type: 'GET',
     crossDomain: true,
     dataType: 'jsonp',
-    headers: {
-      "Set-Cookie", "HttpOnly;Secure;SameSite=Strict"
-    }
     url: "https://apis.solarialabs.com/shine/v1/parking-rules/meters/?apikey=QKMqJPOYFn7OPMVOTQceDwbg3pNA51LK",
     success: function(response) {
       var lat1 = response.Results[0].Latitude;
@@ -24,15 +22,14 @@ $(".find-btn").on("click", function(){
 
       console.log(lat1 , lon1);
 
- $.ajax({
-url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat1
-   + ',' + lon1 + "&key=AIzaSyAoKgGM890KLGTGSoDHYfkD5rrIDXDq3to",
-   success: function(data){
-     console.log(data);
-     console.log('We got here!');
-     $("ul").append("<li>"+data.results[0].formatted_address+"</li>");
-   }
- });
+   $.ajax({
+      url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat1 + ',' + lon1 + "&key=AIzaSyANJtH0hdBr58kmlgkirdufCzZPXOFIF4I",
+      success: function(data){
+        console.log(data);
+        console.log('We got here!');
+        $("ul").append("<li>"+data.results[0].formatted_address+"</li>");
+      }
+    });
 
 
 
